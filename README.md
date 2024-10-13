@@ -1,4 +1,4 @@
-#Welcome to Uranus educational website!
+# Welcome to Uranus educational website!
 In order to activate the website, use the following steps:
 1. Install PostgreSQL DBMS, and in pgAdmin, create a database
 2. Download the project into your local environment
