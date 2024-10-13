@@ -1,0 +1,47 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="admin-input-container">
+    <label>Name</label><br>
+    <input type="text" id="name"><br>
+    <label>Description</label><br>
+    <textarea id="description" rows="10" cols="100"></textarea><br>
+    <div class="center">
+        <button class="action-btn" onclick="edit()">Edit</button>
+    </div>
+    <div class="center">
+        <button class="back-btn" onclick="location.pathname = 'page-admin/courses'">Back</button>
+    </div>
+</div>
+<script>
+    window.onload = function()
+    {
+        document.querySelector('#name').value = '{{course.name}}';
+        document.querySelector('#description').value = '{{course.description}}';
+    }
+
+
+    function edit()
+    {
+        var name = document.querySelector('#name').value;
+        var description = document.querySelector('#description').value;
+
+        $.ajax({
+            url: "{% url 'course_edit' id=course.id %}",
+            type: 'POST',
+            data: {
+                name: name,
+                description: description,
+                crsfmiddlewaretoken: '{{crsf_token}}'
+            },
+            success: (res) => {
+                console.log(res.message);
+                location.pathname = 'page-admin/courses'
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }
+</script>
+{% endblock %}

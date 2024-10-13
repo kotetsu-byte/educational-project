@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="lesson-container">
+        <h1 style="text-align: center;">{{lesson.title}}</h1>
+        <p>{{lesson.info}}</p>
+        <div style="text-align: center;">
+            <button style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: lightblue; border-radius: 10px; color: darkslategrey;" onclick="location.pathname = '/course/{{lesson.course_id}}'">Back</button>
+        </div>
+    </div>
+{% endblock %}

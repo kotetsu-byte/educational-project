@@ -1,0 +1,64 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="admin-index-container">
+    <table id="courses-index-table" border="1">
+        <tr>
+            <th>Question</th>
+            <th>Answer 1</th>
+            <th>Answer 2</th>
+            <th>Answer 3</th>
+            <th>Answer 4</th>
+            <th>Correct Answer</th>
+            <th>Points</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for item in tests %}
+            <tr>
+                <td>{{item.question}}</td>
+                <td>{{item.answer1}}</td>
+                <td>{{item.answer2}}</td>
+                <td>{{item.answer3}}</td>
+                <td>{{item.answer4}}</td>
+                <td>{{item.correct_answer}}</td>
+                <td>{{item.points}}</td>
+                <td><button onclick="location.pathname = 'page-admin/tests/{{item.course_id}}/{{item.id}}'">Details</button></td>
+                <td><button onclick="location.pathname = 'page-admin/tests/edit/{{item.course_id}}/{{item.id}}'">Edit</button></td>
+                <td><button onclick="del({{item.id}})">Delete</button></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div style="text-align: center;">
+        <button class="create-btn" onclick="location.pathname = 'page-admin/tests/create/{{course_id}}'">Create</button>
+    </div>
+    <div class="center">
+        <button class="back-btn" onclick="location.pathname = 'page-admin/courses'">Back</button>
+    </div>
+</div>
+<script>
+    function del(id)
+    {
+        if(confirm('Are you sure you want to delete current test?'))
+        {
+            $.ajax({
+                url: `{% url 'test_delete' %}`,
+                type: 'POST',
+                data: {
+                    id: id,
+                    csrfmiddlewaretoken: '{{csrf_token}}'
+                },
+                success: (res) => {
+                    if(res == 'ok') {
+                        window.location.reload();
+                    }
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            })    
+        }
+    }
+</script>
+{% endblock %}

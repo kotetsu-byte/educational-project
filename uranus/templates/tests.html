@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="tests-container">
+        <div style="text-align: center;">
+            <button style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: lightblue; border-radius: 10px; color: darkslategrey;" onclick="location.pathname = '/course/{{course_id}}'">Back</button>
+        </div><br>
+        {% for test in tests %}        
+        <div class="question-block question-block-{{test.id}} ca-{{test.correct_answer}} points-{{test.points}}" style="border: 1px solid black; margin-bottom: 10px; border-radius: 10px; padding: 20px;">
+            <p>{{test.question}}</p>
+            <input type="radio" name="question-{{test.id}}" class="question question-{{test.id}}"><span>{{test.answer1}}</span><br>
+            <input type="radio" name="question-{{test.id}}" class="qeustion question-{{test.id}}"><span>{{test.answer2}}</span><br>
+            <input type="radio" name="question-{{test.id}}" class="question question-{{test.id}}"><span>{{test.answer3}}</span><br>
+            <input type="radio" name="question-{{test.id}}" class="question question-{{test.id}}"><span>{{test.answer4}}</span>
+        </div>
+        {% endfor %}
+        <div style="text-align: center;">
+            <button style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: yellowgreen; border-radius: 10px; color: darkslategrey;" onclick="finishTest()">Finish</button>
+        </div>
+    </div>
+    <script>
+        function finishTest()
+        {
+            var totalPoints = 0;
+            var testQuantity = {{tests|length}};
+            console.log(testQuantity);
+
+            var questionBlocks = document.querySelectorAll(`.question-block`);
+            questionBlocks.forEach(questionBlock => {
+                var id = parseInt(questionBlock.classList[1].split('-').at(-1));
+                var correctAnswer = parseInt(questionBlock.classList[2].split('-').at(-1));
+                var points = parseInt(questionBlock.classList[3].split('-').at(-1));
+                var choices = document.querySelectorAll(`.question-${id}`);
+                for(var i = 1; i <= choices.length; i++)
+                {
+                    if(choices[i-1].checked)
+                    {
+                        if(i == correctAnswer)
+                        {
+                            totalPoints += points;
+                        }    
+                    }
+                }
+            })
+            localStorage.setItem('total-points', String(totalPoints));
+            window.location.pathname = 'test-results/{{course_id}}';
+        }
+    </script>
+{% endblock %}

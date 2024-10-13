@@ -1,0 +1,40 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="admin-input-container">
+    <label>Name</label><br>
+    <input type="text" id="name"><br>
+    <label>Description</label><br>
+    <textarea id="description" rows="10" cols="100"></textarea><br>
+    <div class="center">
+        <button class="action-btn" onclick="create()">Create</button>
+    </div>
+    <div class="center">
+        <button onclick="location.pathname = 'page-admin/courses'">Back</button>
+    </div>
+</div>
+<script>
+    function create()
+    {
+        var name = document.querySelector('#name').value;
+        var description = document.querySelector('#description').value;
+
+        $.ajax({
+            url: "{% url 'course_create' %}",
+            type: 'POST',
+            data: {
+                name: name,
+                description: description,
+                crsfmiddlewaretoken: '{{crsf_token}}'
+            },
+            success: (res) => {
+                console.log(res.message);
+                location.pathname = 'page-admin/courses'
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }
+</script>
+{% endblock %}

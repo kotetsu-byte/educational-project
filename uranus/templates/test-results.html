@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="test-results-container">
+        <h1 style="text-align: center;">Result: <span id="earned-points"></span>/{{total}}</h1>
+        <div style="text-align: center;">
+            <button style="font-weight: bold; cursor: pointer; padding: 10px 20px; border: none; background-color: yellowgreen; border-radius: 10px; color: darkslategrey;" onclick="location.pathname = '/course/{{course_id}}'">Return back to the course</button>
+        </div>
+        <script>
+            window.onload = function()
+            {
+                document.querySelector('#earned-points').innerHTML = localStorage.getItem('total-points');
+            }
+        </script>
+    </div>
+{% endblock %}

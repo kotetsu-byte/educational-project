@@ -1,0 +1,98 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.center {
+    text-align: center;
+}
+
+/* header */
+#nav {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    height: 80px; 
+    background-color: lightgrey; 
+    align-items: center;
+}
+#nav ul {
+    list-style-type: none;
+    padding: 0 20px;
+}
+#nav li {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+/* admin index container */
+.admin-index-container table, .admin-index-container td, .admin-index-container th {
+    border-collapse: collapse;
+}
+.admin-index-container td, .admin-index-container th {
+    padding: 10px;
+}
+.admin-index-container table {
+    margin: auto;
+}
+.admin-index-container table button {
+    cursor: pointer;
+    background-color: silver;
+    padding: 10px;
+    border-radius: 10px;
+}
+.create-btn {
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.back-btn {
+    background-color: silver;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* admin details container */
+.admin-details-container table, .admin-details-container td, .admin-details-container th {
+    border-collapse: collapse;
+}
+.admin-details-container table {
+    margin: auto;
+}
+.admin-details-container td, .admin-details-container th {
+    padding: 10px;
+}
+
+/* admin input container */
+.admin-input-container {
+    margin: auto;
+    width: fit-content;
+}
+
+.admin-input-container input {
+    padding: 10px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.admin-input-container textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.action-btn {
+    background-color: green;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}

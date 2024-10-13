@@ -1,0 +1,39 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div style="margin: auto; width: 200px; text-align: center;">
+    <p style="text-align: center; padding: 0; margin: 0;">Username</p>
+    <input type="text" id="username" style="padding: 10px; border: 2px grey solid; border-radius: 10px;">
+    <p style="text-align: center; padding: 0; margin: 0;">Password</p>
+    <input type="password" id="password" style="padding: 10px; border: 2px grey solid; border-radius: 10px;"><br>
+    <br>
+    <button style="cursor: pointer; background-color: silver; padding: 10px 20px; border-radius: 10px;" onclick="signin()">Sign in</button><br>
+    <p>Don't have account yet? <a href="/page-admin/register">Register</a></p>
+</div>
+<script>
+    function signin()
+    {
+        var username = document.querySelector('#username').value;
+        var password = document.querySelector('#password').value;
+
+        $.ajax({
+            url: "{% url 'admin-login' %}",
+            type: 'POST',
+            data: {
+                username: username,
+                password: password,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: (res) => {
+                console.log(res);
+                if(res == 'ok'){
+                    location.pathname = '/page-admin/courses';
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }
+</script>
+{% endblock %}

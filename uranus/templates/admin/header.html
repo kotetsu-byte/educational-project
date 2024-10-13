@@ -1,0 +1,40 @@
+<div id="nav">
+    <nav>
+        <ul>
+            <li><a style="text-decoration: none; color: black;" href="/page-admin/courses">Courses</a></li>
+            <li><a style="text-decoration: none; color: black;" href="/page-admin/users">Users</a></li>
+            <li><a style="text-decoration: none; color: black;" href="/">Main Website</a></li>
+        </ul>
+    </nav>
+    <nav>
+        <ul>
+            <li><a style="text-decoration: none; color: black;" href="/page-admin/login">Login</a></li>
+            <li><a style="text-decoration: none; color: black;" href="/page-admin/register">Register</a></li>
+            {% if user.is_authenticated %}
+                <li><button style="background-color: crimson; color: whitesmoke; border: none; border-radius: 10px; padding: 10px 20px; font-weight: bold; font-style: italic; cursor: pointer;" onclick="logout()">Logout</button></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <script>
+        function logout()
+        {
+            $.ajax({
+                url: "{%url 'admin-logout'%}",
+                type: "POST",
+                data: {
+                    active: 'yes',
+                    csrfmiddlewaretoken: '{{csrf_token}}'
+                },
+                success: (res) => {
+                    console.log(res)
+                    if(res == 'ok') {
+                        location.pathname = '/page-admin/login';
+                    }
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            })
+        }
+    </script>
+</div>

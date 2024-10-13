@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="index-container">
+        <div id="index-header">
+            <h1 class="center">Welcome to Unanus Education Website!</h1>
+        </div>
+        <div id="index-courses">
+            <h1 class="center">All Courses</h1>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                {% for course in courses %}
+                    <div style="background-color: lightblue; border-radius: 10px; padding: 15px; position: relative;">
+                        <h1 style="text-align: center;">{{course.name}}</h1>
+                        <p style="text-align: justify;">{{course.description}}</p>
+                        <div style="text-align: center;">
+                            <button style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: yellowgreen; border-radius: 10px; color: darkslategrey;" onclick="location.pathname = '/course/{{course.id}}'">Go</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends '../base.html' %}
+
+{% block content %}
+    <div class="admin-details-container">
+        <table border="1">
+            <tr>
+                <th>Question</th>
+                <td>{{test.question}}</td>
+            </tr>
+            <tr>
+                <th>Answer 1</th>
+                <td>{{test.answer1}}</td>
+            </tr>
+            <tr>
+                <th>Answer 2</th>
+                <td>{{test.answer2}}</td>
+            </tr>
+            <tr>
+                <th>Answer 3</th>
+                <td>{{test.answer3}}</td>
+            </tr>
+            <tr>
+                <th>Answer 4</th>
+                <td>{{test.answer4}}</td>
+            </tr>
+            <tr>
+                <th>Correct answer</th>
+                <td>{{test.correct_answer}}</td>
+            </tr>
+            <tr>
+                <th>Points</th>
+                <td>{{test.points}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="center">
+        <button class="back-btn" onclick="location.pathname = 'page-admin/tests/{{test.course_id}}'">Back</button>
+    </div>
+{% endblock %}

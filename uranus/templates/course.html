@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="padding: 60px 120px;" id="course-container">
+        <h1 style="text-align: center;">{{course.name}}</h1>
+        <p>{{course.description}}</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            {% for lesson in lessons %}
+                <div style="cursor: pointer; background-color: orange; border: 1px solid 3px; border-radius: 10px; padding: 0 10px;" onclick="location.pathname = '/lesson/{{course.id}}/{{lesson.id}}'">
+                    <h5>{{lesson.title}}</h5>
+                </div>
+            {% endfor %}
+        </div><br>
+        {% if tests|length != 0 %}
+            <div style="text-align: center;">
+                <button style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: yellowgreen; border-radius: 10px; color: darkslategrey;" onclick="location.pathname = 'tests/{{course.id}}'">Go to Tests</button>
+            </div>
+        {% endif %}
+        <br>
+        <div style="text-align: center;">
+            <button onclick="location.pathname = '/courses'" style="font-weight: bold; cursor: pointer; padding: 10px 40px; border: none; background-color: lightblue; border-radius: 10px; color: darkslategrey;">Back</button>
+        </div>
+    </div>
+{% endblock %}
