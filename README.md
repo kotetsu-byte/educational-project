@@ -5,6 +5,7 @@ In order to activate the website, use the following steps:
 3. Open the folder "uranus" and make its content appear in your coding environment (it can be Visual Studio Code)
 4. In your coding environment, find another folder called "uranus", and there find the file "settings.py"
 5. In this file, find the folloing code and fill in with your own values
+
    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -16,12 +17,12 @@ In order to activate the website, use the following steps:
     }
 }
 These values can be found in connection string when clicking the server on the left side and navigating to properties on the right side of the program window.
-6. In your coding environment, open the console terminal, and when you insert following commands one by one, don't forget to press Enter each time (this will be for Windows)
-7. "cd ../"
-8. ".\venv\Scripts\activate"
-9. "cd uranus"
-10. "py manage.py makemigrations"
-11. "py manage.py migrate"
-12. "py manage.py seed"
-13. "py manage.py runserver"
-14. After that the link to the website will appear. Open a browser and paste this link. You will see the whole website!
+7. In your coding environment, open the console terminal, and when you insert following commands one by one, don't forget to press Enter each time (this will be for Windows)
+8. "cd ../"
+9. ".\venv\Scripts\activate"
+10. "cd uranus"
+11. "py manage.py makemigrations"
+12. "py manage.py migrate"
+13. "py manage.py seed"
+14. "py manage.py runserver"
+15. After that the link to the website will appear. Open a browser and paste this link. You will see the whole website!
