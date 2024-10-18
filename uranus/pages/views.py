@@ -3,9 +3,6 @@ from courses.models import Course
 from lessons.models import Lesson
 from tests.models import Test
 
-def in_user_group(user):
-    return user.is_authenticated and user.groups.filter(name = 'User').exists()
-
 # Create your views here.
 def Index(request, *args, **kwargs):
     courses = Course.objects.all()
