@@ -25,7 +25,6 @@ from pages.views import Tests
 from pages.views import TestResults
 from pages.views import About
 from pages.views import Contacts
-from pages.views import AdminIndex
 
 from courses.views import AdminCourseIndex
 from courses.views import AdminCourseDetails
@@ -64,7 +63,6 @@ urlpatterns = [
     path('test-results/<int:course_id>', TestResults),
     path('about/', About),
     path('contacts/', Contacts),
-    path('page-admin/', AdminIndex),
     #admin-course
     path('page-admin/courses/', AdminCourseIndex),
     path('page-admin/courses/<int:id>/', AdminCourseDetails),
