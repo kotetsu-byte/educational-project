@@ -5,14 +5,14 @@ from tests.models import Test
 
 # Create your views here.
 def Index(request, *args, **kwargs):
-    courses = Course.objects.all()
+    courses = Course.objects.all().order_by('id')
     return render(request, "index.html", {'courses': courses})
 
 def Users(request, *args, **kwargs):
     return render(request, "users.html", {})
 
 def Courses(request, *args, **kwargs):
-    courses = Course.objects.all()
+    courses = Course.objects.all().order_by('id')
     return render(request, "courses.html", {'courses': courses})
 
 def OneCourse(request, id):
@@ -41,6 +41,3 @@ def About(request, *args, **kwargs):
 
 def Contacts(request, *args, **kwargs):
     return render(request, "contacts.html", {})
-
-def AdminIndex(request, *args, **kwargs):
-    return render(request, "admin/index.html", {})
