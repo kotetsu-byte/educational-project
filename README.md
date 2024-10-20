@@ -7,7 +7,9 @@ In order to activate the website, use the following steps:
 4. In your coding environment, find another folder called "uranus", and there find the file "settings.py"
 5. In this file, find the folloing code and fill in with your own values
 
-DATABASES = { 'default': { 'ENGINE': 'django.db.backends.postgresql', 'NAME': '{name of created database}', 'USER': '{your username on PostgreSQL DBMS}', 'PASSWORD': '{your passwrord registered when installing PostgreSQL DBMS}', 'HOST': '{name of the host (usually 'localhost')}', 'PORT': '{four digits of the port (usually '5432')}' } } These values can be found in connection string when clicking the server on the left side and navigating to properties on the right side of the program window.
+DATABASES = { 'default': { 'ENGINE': 'django.db.backends.postgresql', 'NAME': '{name of created database}', 'USER': '{your username on PostgreSQL DBMS}', 'PASSWORD': '{your passwrord registered when installing PostgreSQL DBMS}', 'HOST': '{name of the host (usually 'localhost')}', 'PORT': '{four digits of the port (usually '5432')}' } } 
+
+These values can be found in connection string when clicking the server on the left side and navigating to properties on the right side of the program window.
 
 In your coding environment, open the console terminal, and when you insert following commands one by one, don't forget to press Enter each time (this will be for Windows)
 
