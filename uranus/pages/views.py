@@ -33,7 +33,8 @@ def TestResults(request, course_id):
     tests = Test.objects.filter(course_id = course_id)
     total = 0
     for test in tests:
-        total += test.points
+        if test.points:
+            total += test.points
     return render(request, "test-results.html", {'total': total, 'course_id': course_id})
 
 def About(request, *args, **kwargs):
